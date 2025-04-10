@@ -1,0 +1,13 @@
+# 環境変数
+.env
+.env.local
+
+# 依存関係
+node_modules/
+dist/
+
+# システムファイル
+.DS_Store
+
+# ログ
+*.log

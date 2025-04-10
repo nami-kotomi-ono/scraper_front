@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+  .analysis-container {
+    @apply grid grid-cols-1 sm:grid-cols-2 gap-4 w-full max-w-2xl px-4 md:px-0;
+  }
+
+  .analysis-card {
+    @apply bg-white p-4 md:p-6 rounded-lg shadow-md;
+  }
+
+  .analysis-header {
+    @apply flex items-center gap-2 mb-2;
+  }
+
+  .analysis-title {
+    @apply text-base md:text-lg font-semibold;
+  }
+
+  .analysis-price {
+    @apply text-xl md:text-2xl font-bold;
+  }
+
+  .analysis-product-name {
+    @apply text-xs md:text-sm text-gray-600 truncate;
+  }
+
+  .analysis-stats {
+    @apply space-y-1 md:space-y-2;
+  }
+
+  .analysis-stat-text {
+    @apply text-sm md:text-base text-gray-700;
+  }
+
+  .analysis-error {
+    @apply text-center text-red-500;
+  }
+
+  .text-green {
+    @apply text-green-500;
+  }
+
+  .text-red {
+    @apply text-red-500;
+  }
+
+  .text-blue {
+    @apply text-blue-500;
+  }
+
+  .text-purple {
+    @apply text-purple-500;
+  }
+}
