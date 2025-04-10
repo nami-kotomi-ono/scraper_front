@@ -42,4 +42,6 @@ yarn dev
 
 アプリケーションは `http://localhost:5173` で起動します。
 
-## プロジェクト構成
+## 画面
+![image](https://github.com/user-attachments/assets/6c442318-27e1-48f4-b3b9-14b4656f8571)
+
