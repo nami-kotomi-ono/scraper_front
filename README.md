@@ -43,3 +43,6 @@ yarn dev
 ## 画面
 ![image](https://github.com/user-attachments/assets/6c442318-27e1-48f4-b3b9-14b4656f8571)
 
+## 今後やりたいこと
+* 入力キーワードのバリデーション
+
