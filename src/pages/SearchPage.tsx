@@ -10,11 +10,9 @@ import { Search } from 'lucide-react';
 export const SearchPage: React.FC = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [searchResult, setSearchResult] = useState<SearchResponse | null>(null);
-  const [currentKeyword, setCurrentKeyword] = useState<string>('');
 
   const handleSearch = async (keyword: string) => {
     setIsLoading(true);
-    setCurrentKeyword(keyword);
     
     try {
       const result = await searchProducts(keyword);
@@ -63,7 +61,7 @@ export const SearchPage: React.FC = () => {
               </div>
               {!searchResult.error && (
                 <div className="flex justify-center">
-                  <DownloadLink keyword={currentKeyword} />
+                  <DownloadLink filename={searchResult.filename} />
                 </div>
               )}
             </div>

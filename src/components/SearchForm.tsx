@@ -23,7 +23,7 @@ export const SearchForm: React.FC<SearchFormProps> = ({ onSearch, isLoading }) =
           type="text"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
-          placeholder="商品名を入力してください..."
+          placeholder="iPhone スマートフォン本体 黒"
           className="w-full px-4 py-3 pr-12 text-gray-700 bg-white border border-gray-300 rounded-lg focus:outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-200"
           disabled={isLoading}
         />

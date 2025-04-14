@@ -15,8 +15,9 @@ export interface SearchResponse {
     average_price: number;
     median_price: number;
     total_items: number;
-  };
+  } | null;
   error: string | null;
+  filename: string | null;
 }
 
 interface ErrorResponse {
@@ -43,42 +44,21 @@ export const searchProducts = async (keyword: string): Promise<SearchResponse> =
   }
 };
 
-const getFilenameFromContentDisposition = (contentDisposition: string): string => {
-  // UTF-8エンコードされたファイル名を優先
-  const utf8Match = contentDisposition.match(/filename\*=UTF-8''(.+)/);
-  if (utf8Match) {
-    return decodeURIComponent(utf8Match[1]);
-  }
-  
-  // 通常のファイル名
-  const regularMatch = contentDisposition.match(/filename="(.+)"/);
-  if (regularMatch) {
-    return regularMatch[1];
-  }
-  
-  throw new Error('ファイル名を取得できませんでした');
-};
-
 export const downloadCSV = async (filename: string): Promise<void> => {
+  if (!filename) {
+    throw new Error('ダウンロード可能なファイルが見つかりません');
+  }
+
   try {
-    console.log(`/download/${filename}`)
     const response = await api.get(`/download/${filename}`, {
       responseType: 'blob',
     });
-
-    // Content-Dispositionヘッダーからファイル名を取得
-    const contentDisposition = response.headers['content-disposition'];
-    if (!contentDisposition) {
-      throw new Error('ダウンロードファイルの情報が取得できません');
-    }
-
-    const downloadFilename = getFilenameFromContentDisposition(contentDisposition);
 
     // BlobからURLを作成
     const url = window.URL.createObjectURL(new Blob([response.data]));
     const link = document.createElement('a');
     link.href = url;
-    link.setAttribute('download', downloadFilename);
+    link.setAttribute('download', filename);
     document.body.appendChild(link);
     link.click();
     link.remove();
